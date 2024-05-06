@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+img{
+    width: 100%;
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #18181B;
+}
+
+.bar-top{
+    width: 100%;
+    height: 5px;
+    top: 0;
+    left: 0;
+    animation: progress-horizontal, progress-color;
+    position: fixed;
+    animation-timeline: scroll();
+    transform-origin: 0 100%;
+}
+
+.bar-bottom{
+    width: 100%;
+    height: 5px;
+    bottom: 0;
+    left: 0;
+    animation: progress-horizontal, progress-color;
+    position: fixed;
+    animation-timeline: scroll();
+    transform-origin: 100%;
+}
+
+.bar-left{
+    width: 5px;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    animation: progress-vertical, progress-color;
+    position: fixed;
+    animation-timeline: scroll();
+    transform-origin: 0 100%;
+}
+
+.bar-right{
+    width: 5px;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    animation: progress-vertical, progress-color;
+    position: fixed;
+    animation-timeline: scroll();
+    transform-origin: 0 0%;
+}
+
+@keyframes progress-horizontal {
+    0% {
+       transform: scaleX(0); 
+    }
+    100% {
+        transform: scaleX(1)
+    }
+}
+
+@keyframes progress-vertical {
+    0% {
+       transform: scaleY(0); 
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+
+@keyframes progress-color {
+    0% {
+       background-color: red; 
+    }
+    50% {
+        background-color: green;
+    }
+    100% {
+        background-color: blue;
+    }
+}
+
+#progress {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    height: 60px;
+    width: 60px;
+    display: none;
+    place-items: center;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2 );
+    cursor: pointer;
+}
+
+#progress-value{
+    display: grid;
+    height: calc(100% - 15px);
+    width: calc(100% - 15px);
+    background-color: #ffffff;
+    border-radius: 50%;
+    place-items: center;
+    font-size: 30px;
+    color: #001a2e;
+}
+
+nav{
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-logo{
+    max-width: 100px;
+}
+
+.nav-links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.link a{
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #fff;
+}
+
+.link a::after{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1d4ed8;
+    transition: all 0.3s ease;
+}
+
+.link a:hover::after{
+    width: 70%;
+}
+
+.wrapper-1{
+    width: 420px;
+    padding: 30px 10px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.wrapper-2{
+    width: 420px;
+    padding: 30px 10px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.wrapper-3{
+    width: 420px;
+    padding: 30px 10px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.wrapper-4{
+    width: 420px;
+    padding: 30px 10px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    overflow: hidden;
+    z-index: 2;
+}
+
+#show-toast{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 10%;
+    left: 50%;
+    background-color: #101020;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#toastTrue{
+    width: 380px;
+    height: 80px;
+    padding: 7px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+    border-right: 8px solid #47d764;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 0.5fr;
+    transform: translateX(-440px);
+    transition: 1s;
+    z-index: 2;
+}
+
+#toastFalse{
+    width: 380px;
+    height: 80px;
+    padding: 7px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+    border-right: 8px solid red;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 0.5fr;
+    transform: translateX(-440px);
+    transition: 1s;
+}
+
+#toastInfo{
+    width: 380px;
+    height: 80px;
+    padding: 7px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+    border-right: 8px solid grey;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 0.5fr;
+    transform: translateX(-440px);
+    transition: 1s;
+}
+
+#toastMessage{
+    width: 380px;
+    height: 80px;
+    padding: 7px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(75, 50, 50, 0.05);
+    border-right: 8px solid blue;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 6fr 0.5fr;
+    transform: translateX(-440px);
+    transition: 1s;
+}
+
+.container-1,.container-2, .container-3, .container-4, .container-5{
+    align-self: center;
+}
+
+.container-3 i{
+    font-size: 40px;
+    color: red;
+}
+
+.container-4 i{
+    font-size: 40px;
+    color: grey;
+}
+
+.container-5 i{
+    font-size: 40px;
+    color: blue;
+}
+
+.container-1 i{
+    font-size: 40px;
+    color: #47d764;
+}
+.container-2 p:first-child{
+    color: #101020;
+    font-weight: 600;
+    font-size: 16px;
+}
+.container-2 p:last-child{
+    font-size: 12px;
+    color: #656565;
+    font-weight: 400;
+}
+
+#info-server p{
+    color: #101020;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#toastTrue button{
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 25px;
+    line-height: 0;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+#toastFalse button{
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 25px;
+    line-height: 0;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+#toastInfo button{
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 25px;
+    line-height: 0;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+#toastMessage button{
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 25px;
+    line-height: 0;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+
+#toggle-chat {
+    font-size: 20px;
+    z-index: 2;
+    height: 50px;
+    width: 170px;
+    position: relative;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.1);
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
+}
+#toggle-chat:before{
+    /*content: "Open Chat";*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins',sans-serif;
+    font-size: 25px;
+    letter-spacing: 6px;
+    font-weight: 700;
+    padding: 32px 0;
+    color: #fcfcfc;
+    background-color: rgba(255,255,255,0.06);
+    backdrop-filter: blur(25px);
+    cursor: pointer;
+}
+#toggle-chat:after{
+    content: "";
+    height: 450px;
+    width: 450px;
+    position: absolute;
+    left: -137px;
+    top: -195px;
+    z-index: -1;
+    background-image: conic-gradient(
+        #ff2e4e,
+        #d960ff,
+        #9264ff,
+        #00b3f9,
+        #06cd69,
+        #ffcd00,
+        #ff5c22,
+        #ff2e4e
+    );
+}
+#toggle-chat:hover:after{
+    animation: spin 3s linear infinite;
+}
+@keyframes spin{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000; /* Ensure the chat box is above other content */
+}
+
+.chat-form {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: #f7f7f7;
+}
+
+#user-message {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+  margin-right: 10px; /* Add margin to the right side of the input */
+}
+
+#send-message {
+  font-size: 12px;
+  background-color: #008000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 3px; /* Add margin to the left side of the button */
+}
+
+#send-message:hover {
+  background-color: #006400;
+}
+
+.notification {
+  display: none;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.close-chat{
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #1d4ed8;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-chat:hover{
+    background-color: #1e40af;
+}
+
+
+.btn{
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #1d4ed8;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    background-color: #1e40af;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+}
+
+.blur{
+    position: absolute;
+    box-shadow: 0 0 1000px 50px #1d4ed8;
+    z-index: -100;
+}
+
+header{
+    position: relative;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+header .content h4{
+    margin-bottom: 1rem;
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+header .content h1{
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+
+header .content h1 span{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #fff;
+}
+
+header .content p{
+    margin-bottom: 2rem;
+    color: #ccc;
+    text-align: justify;
+}
+
+header .image{
+    position: relative;
+}
+
+header .image::before{
+    content: "o";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38rem;
+    font-weight: 400;
+    line-height: 20rem;
+    color: #1d4ed8;
+    opacity: 0.2;
+    z-index: -100;
+}
+
+header .image img{
+    max-width: 600px;
+    margin: auto;
+}
+
+section .header{
+    margin-bottom: 1rem;
+    color: #fff;
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 600;
+}
+
+.project{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.project .card{
+    background-color: #27272a;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.project .card:hover{
+    background-color: #323232;
+    border-color: #fff;
+}
+
+.project .card span{
+    display: inline-block;
+    background-color: #1e40af;
+    padding: 2px 9px;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.project .card h4{
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.project .card p{
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.project .card a{
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.project .card a:hover{
+    color: #1e40af;
+}
+
+.sub-header{
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    color: #ccc;
+}
+
+.sub-header .abt-me{
+    color: yellow;
+}
+
+.sub-header .inters-text{
+    color: #ADFF2F;
+}
+
+.sub-header .but-text{
+    color: red;
+}
+
+.about{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.about .card{
+    padding: 3rem 2rem;
+    background-color: #27272a;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.about .card:hover{
+    background-color: #323232;
+    border-color: #fff;
+}
+
+.about .card .content{
+    flex: 1;
+    margin-bottom: 2rem;
+}
+
+.about .card .edu-title{
+    color: red;
+}
+
+.about .card .exe-title{
+    color: blue;
+}
+
+.about .card .skill-title{
+    color: green;
+}
+
+.about .card h4{
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.about .card h3{
+    color: #fff;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 2px dashed #fff;
+}
+
+.about .card p{
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.about .card p i{
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-right: 0.3rem;
+}
+
+.about .card .edu-text {
+    color: #ccc; /* Atur warna untuk teks sebelum tahun */
+}
+
+.about .card .year-text {
+    color: yellow; /* Atur warna untuk tahun */
+}
+
+
+.about .card button{
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.about .card button:hover{
+    background-color: #1e40af;
+    border-color: #1e40af;
+}
+
+footer{
+    position: relative;
+    display: grid;
+    grid-template-columns: 400px repeat(3, 1fr);
+    gap: 2rem;
+}
+
+footer .column .logo{
+    max-width: 100px;
+    margin-bottom: 2rem;
+}
+
+footer .column p{
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+footer .column .socials{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer .column .socials a{
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 1.25rem;
+    border-radius: 100%;
+    transition: all 0.3s ease;
+}
+
+footer .column .socials a:hover{
+    color: #fff;
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+footer .column h4{
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+footer .column > a{
+    display: block;
+    color: #ccc;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+footer .column > a:hover{
+    color: #1d4ed8;
+}
+
+.copyright{
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+@media (width < 900px){
+    .nav-links{
+        display: none;
+    }
+    header{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    header .image{
+        grid-area: 1/1/2/2;
+    }
+    .project{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    footer{
+        grid-template-columns: 1fr 200px;
+    }
+}
+
+@media (width < 600px){
+    header .image::before{
+        display: none;
+    }
+
+    .project{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .about{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    footer{
+        grid-template-columns: 1fr 150px;
+    }
+}
+
+/* Code For Custom Scrollbar Starts Here */
+/* For firefox */
+.sub-div {
+  max-height: 100vh;
+  overflow-y: scroll;
+  /*Thumb color and background color for firefox */
+  scrollbar-color: #00c6ff #242942;
+  overflow-x: none;
+}
+/*  ::-webkit- is for chrome */
+::-webkit-scrollbar {
+  width: 1.2em;
+  overflow-x: none;
+}
+::-webkit-scrollbar-track {
+  background-color: #242942;
+  margin-block: 0.25em;
+  border-radius: 0.3em;
+}
+::-webkit-scrollbar-thumb {
+  background: #00c6ff;
+  background: -webkit-linear-gradient(to right, #00c6ff, #0072ff);
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  border-radius: 0.3em;
+}
